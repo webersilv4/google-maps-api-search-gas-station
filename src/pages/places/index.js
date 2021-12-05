@@ -24,7 +24,7 @@ export default class Places extends Component {
             headers: { "Access-control-allow-origin": '*' }
         };
 
-        await axios.get(`http://localhost:8080/api/v1/places/${lat}/${lng}`, config)
+        await axios.get(`https://google-maps-api-backend.herokuapp.com/api/v1/places/${lat}/${lng}`, config)
             .then(response => {
                 if (response)
                     this.setState({ locations: response.data });
