@@ -28,14 +28,33 @@ class MyMap extends React.Component {
         }
     }
 
-    render() {
-        const { lat, lng } = this.state;
-        console.log(lat, lng)
-        return (
-            <div>
 
-                {lat} <br />
-                {lng}
+
+    render() {
+
+        const { lat, lng } = this.state;
+
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            window.location.replace(`/places/${lat}/${lng}`)
+        }
+
+
+        return (
+            <div style={{ textAlign: "center" }}>
+                <h1>Ver postos de gasolina</h1>
+                <button onClick={handleSubmit} style={{
+                    backgroundColor: "#2E9AFE",
+                    border: "0px",
+                    height: "50px",
+                    width: "130px",
+                    borderRadius: "5px",
+                    fontWeight: "bold",
+                    cursor: "pointer"
+                }}>
+                    Ver postos
+                </button>
             </div>
         );
     }
