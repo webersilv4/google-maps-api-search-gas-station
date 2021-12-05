@@ -20,11 +20,8 @@ export default class Places extends Component {
 
         this.setState({ defaultCenter: { lat: Number(lat), lng: Number(lng) } });
 
-        let config = {
-            headers: { "Access-control-allow-origin": '*' }
-        };
 
-        await axios.get(`https://google-maps-api-backend.herokuapp.com/api/v1/places/${lat}/${lng}`, config)
+        await axios.get(`https://google-maps-api-backend.herokuapp.com/api/v1/places/${lat}/${lng}`)
             .then(response => {
                 if (response)
                     this.setState({ locations: response.data });
