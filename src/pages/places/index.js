@@ -22,7 +22,7 @@ export default class Places extends Component {
         this.setState({ defaultCenter: { lat: Number(lat), lng: Number(lng) } });
 
 
-        await axios.get(`http://localhost:8080/api/v1/places/${lat}/${lng}`)
+        await axios.get(`https://google-maps-api-backend.herokuapp.com/api/v1/places/${lat}/${lng}`)
             .then(response => {
                 if (response)
                     this.setState({ locations: response.data });
