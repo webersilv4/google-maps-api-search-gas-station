@@ -1,7 +1,8 @@
 import { Component } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
-
 import axios from 'axios';
+
+import '../style/global.css';
 
 
 export default class Places extends Component {
@@ -21,7 +22,7 @@ export default class Places extends Component {
         this.setState({ defaultCenter: { lat: Number(lat), lng: Number(lng) } });
 
 
-        await axios.get(`https://google-maps-api-backend.herokuapp.com/api/v1/places/${lat}/${lng}`)
+        await axios.get(`http://localhost:8080/api/v1/places/${lat}/${lng}`)
             .then(response => {
                 if (response)
                     this.setState({ locations: response.data });
@@ -45,10 +46,15 @@ export default class Places extends Component {
 
         const onSelect = item => {
             setSelected(item);
-            const { name } = item;
+            const { name, opening_hours, rating, vicinity } = item;
 
-            var btn = document.createElement("H5");   // Create a <button> element
-            btn.innerHTML += name;                   // Insert text
+            var btn = document.createElement("SECTION");   // Create a <button> element
+            btn.innerHTML = `
+                    <h2>Nome : ${name}</h2>
+                    <p>${opening_hours ? 'Aberto agora' : ''}</p>
+                    <p>Avaliação: ${rating}</p>
+                    <p>Proximo a: ${vicinity}</p>
+            `;                   // Insert text
             document.body.appendChild(btn);
 
             // document.getElementById("name_location").innerHTML += name;
