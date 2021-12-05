@@ -5,7 +5,7 @@ import axios from "axios";
 //     headers: { 'AccAccess-Control-Allow-Origin': '*' }
 // });
 
-function names() {
+function googleMapsApi() {
 
 
     var config = {
@@ -43,4 +43,4 @@ function names() {
 //     return config;
 // });
 
-export default names;
+export default googleMapsApi;
